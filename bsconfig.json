@@ -2,12 +2,16 @@
   "name": "@resinfo/async",
   "namespace": true,
   "version": "0.1.0",
-  "sources": {
+  "sources": [{
     "dir": "src",
     "subdirs": true
-  },
+  }, {
+    "dir": "test",
+    "type": "dev"
+  }],
   "package-specs": {
     "in-source": true,
-    "module": "commonjs"
+    "module": "es6",
+    "suffix": ".mjs"
   }
 }
