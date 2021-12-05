@@ -9,6 +9,9 @@
     "dir": "test",
     "type": "dev"
   }],
+  "bs-dev-dependencies": [
+    "@dusty-phillips/rescript-zora"
+  ],
   "package-specs": {
     "in-source": true,
     "module": "es6",
