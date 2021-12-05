@@ -1,7 +1,7 @@
 {
   "name": "@resinfo/async",
-  "namespace": true,
   "version": "0.1.0",
+  "namespace": true,
   "sources": [{
     "dir": "src",
     "subdirs": true
@@ -10,7 +10,8 @@
     "type": "dev"
   }],
   "bs-dev-dependencies": [
-    "@dusty-phillips/rescript-zora"
+    "@dusty-phillips/rescript-zora",
+    "@ryyppy/rescript-promise"
   ],
   "package-specs": {
     "in-source": true,
