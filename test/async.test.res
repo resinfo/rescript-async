@@ -1,10 +1,13 @@
+module Async = Resinfo_async
+
 open Zora
+
+let unit = ()
 
 let sleep = (duration, fn) => Js.Global.setTimeout(fn, duration)->ignore
 let sleepAsync = duration => duration->sleep->Async.make
 let sleepPromise = duration => {
   Promise.make((resolve, _) => {
-    let unit = ()
     sleep(duration, () => resolve(. unit))
   })
 }

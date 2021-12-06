@@ -3,7 +3,7 @@
 import * as Zora from "@dusty-phillips/rescript-zora/src/Zora.mjs";
 import * as Zora$1 from "zora";
 import * as Curry from "rescript/lib/es6/curry.js";
-import * as Async$ResinfoAsync from "../src/async.mjs";
+import * as Resinfo_async from "../src/resinfo_async.mjs";
 
 function sleep(duration, fn) {
   setTimeout(fn, duration);
@@ -11,7 +11,7 @@ function sleep(duration, fn) {
 }
 
 function sleepAsync(duration) {
-  return Async$ResinfoAsync.make(function (param) {
+  return Resinfo_async.make(function (param) {
               setTimeout(param, duration);
               
             });
@@ -32,7 +32,7 @@ Zora$1.test("should run as callback", (function (t) {
         };
         return Zora.$$then(Promise.all([
                         new Promise((function (resolve, _reject) {
-                                return Async$ResinfoAsync.run(Async$ResinfoAsync.make(function (param) {
+                                return Resinfo_async.run(Resinfo_async.make(function (param) {
                                                 setTimeout(param, 1000);
                                                 
                                               }), (function (param) {
@@ -58,7 +58,7 @@ Zora$1.test("should run as promises", (function (t) {
         };
         return Zora.$$then(Promise.all([
                         new Promise((function (resolve, _reject) {
-                                var __x = Async$ResinfoAsync.toPromise(Async$ResinfoAsync.make(function (param) {
+                                var __x = Resinfo_async.toPromise(Resinfo_async.make(function (param) {
                                           setTimeout(param, 1000);
                                           
                                         }));
@@ -85,7 +85,7 @@ Zora$1.test("should map values", (function (t) {
         var init = {
           contents: false
         };
-        var effect = Async$ResinfoAsync.map(Async$ResinfoAsync.make(function (param) {
+        var effect = Resinfo_async.map(Resinfo_async.make(function (param) {
                   setTimeout(param, 1000);
                   
                 }), (function (param) {
@@ -93,7 +93,7 @@ Zora$1.test("should map values", (function (t) {
               }));
         return Zora.$$then(Promise.all([
                         new Promise((function (resolve, _reject) {
-                                return Async$ResinfoAsync.run(effect, (function (p) {
+                                return Resinfo_async.run(effect, (function (p) {
                                               return resolve((init.contents = p, undefined));
                                             }));
                               })),
@@ -114,18 +114,18 @@ Zora$1.test("should flatMap values", (function (t) {
         var init = {
           contents: false
         };
-        var effect = Async$ResinfoAsync.flatMap(Async$ResinfoAsync.make(function (param) {
+        var effect = Resinfo_async.flatMap(Resinfo_async.make(function (param) {
                   setTimeout(param, 1000);
                   
                 }), (function (param) {
-                return Async$ResinfoAsync.make(function (param) {
+                return Resinfo_async.make(function (param) {
                             setTimeout(param, 1000);
                             
                           });
               }));
         return Zora.$$then(Promise.all([
                         new Promise((function (resolve, _reject) {
-                                return Async$ResinfoAsync.run(effect, (function (param) {
+                                return Resinfo_async.run(effect, (function (param) {
                                               return resolve((init.contents = true, undefined));
                                             }));
                               })),
@@ -146,15 +146,15 @@ Zora$1.test("should join values", (function (t) {
         var init = {
           contents: false
         };
-        var effect = Async$ResinfoAsync.join(Async$ResinfoAsync.map(Async$ResinfoAsync.make(function (param) {
+        var effect = Resinfo_async.join(Resinfo_async.map(Resinfo_async.make(function (param) {
                       setTimeout(param, 1000);
                       
                     }), (function (param) {
-                    return Async$ResinfoAsync.unit(undefined);
+                    return Resinfo_async.unit(undefined);
                   })));
         return Zora.$$then(Promise.all([
                         new Promise((function (resolve, _reject) {
-                                return Async$ResinfoAsync.run(effect, (function (param) {
+                                return Resinfo_async.run(effect, (function (param) {
                                               return resolve((init.contents = true, undefined));
                                             }));
                               })),
@@ -175,24 +175,24 @@ Zora$1.test("should map, flatMap, join and run", (function (t) {
         var init = {
           contents: false
         };
-        var effect = Async$ResinfoAsync.join(Async$ResinfoAsync.map(Async$ResinfoAsync.flatMap(Async$ResinfoAsync.map(Async$ResinfoAsync.flatMap(Async$ResinfoAsync.unit(undefined), (function (param) {
-                                return Async$ResinfoAsync.make(function (param) {
+        var effect = Resinfo_async.join(Resinfo_async.map(Resinfo_async.flatMap(Resinfo_async.map(Resinfo_async.flatMap(Resinfo_async.unit(undefined), (function (param) {
+                                return Resinfo_async.make(function (param) {
                                             setTimeout(param, 1000);
                                             
                                           });
                               })), (function (param) {
                             return true;
                           })), (function (x) {
-                        return Async$ResinfoAsync.map(Async$ResinfoAsync.make(function (param) {
+                        return Resinfo_async.map(Resinfo_async.make(function (param) {
                                         setTimeout(param, 1000);
                                         
                                       }), (function (param) {
                                       return x;
                                     }));
-                      })), Async$ResinfoAsync.unit));
+                      })), Resinfo_async.unit));
         return Zora.$$then(Promise.all([
                         new Promise((function (resolve, _reject) {
-                                return Async$ResinfoAsync.run(effect, (function (x) {
+                                return Resinfo_async.run(effect, (function (x) {
                                               return resolve((init.contents = x, undefined));
                                             }));
                               })),
@@ -214,28 +214,28 @@ Zora$1.test("should map, flatMap, join and run", (function (t) {
       }));
 
 Zora$1.test("Cancellable", (function (t) {
-        var effect = Async$ResinfoAsync.join(Async$ResinfoAsync.map(Async$ResinfoAsync.flatMap(Async$ResinfoAsync.map(Async$ResinfoAsync.flatMap(Async$ResinfoAsync.unit(undefined), (function (param) {
-                                return Async$ResinfoAsync.make(function (param) {
+        var effect = Resinfo_async.join(Resinfo_async.map(Resinfo_async.flatMap(Resinfo_async.map(Resinfo_async.flatMap(Resinfo_async.unit(undefined), (function (param) {
+                                return Resinfo_async.make(function (param) {
                                             setTimeout(param, 1000);
                                             
                                           });
                               })), (function (param) {
                             return true;
                           })), (function (x) {
-                        return Async$ResinfoAsync.map(Async$ResinfoAsync.make(function (param) {
+                        return Resinfo_async.map(Resinfo_async.make(function (param) {
                                         setTimeout(param, 1000);
                                         
                                       }), (function (param) {
                                       return x;
                                     }));
-                      })), Async$ResinfoAsync.unit));
+                      })), Resinfo_async.unit));
         t.test("should run when not cancelled", (function (t) {
                 var init = {
                   contents: false
                 };
                 return Zora.$$then(Promise.all([
                                 new Promise((function (resolve, param) {
-                                        Async$ResinfoAsync.Cancellable.run(effect, (function (x) {
+                                        Resinfo_async.Cancellable.run(effect, (function (x) {
                                                 init.contents = x;
                                                 return resolve(undefined);
                                               }));
@@ -261,7 +261,7 @@ Zora$1.test("Cancellable", (function (t) {
                 var init = {
                   contents: false
                 };
-                var cancel = Async$ResinfoAsync.Cancellable.run(effect, (function (x) {
+                var cancel = Resinfo_async.Cancellable.run(effect, (function (x) {
                         init.contents = x;
                         
                       }));
@@ -290,7 +290,7 @@ Zora$1.test("Cancellable", (function (t) {
                 var init = {
                   contents: false
                 };
-                var cancel = Async$ResinfoAsync.Cancellable.run(effect, (function (x) {
+                var cancel = Resinfo_async.Cancellable.run(effect, (function (x) {
                         init.contents = x;
                         
                       }));
@@ -318,7 +318,13 @@ Zora$1.test("Cancellable", (function (t) {
         return Zora.done(undefined);
       }));
 
+var Async;
+
+var unit;
+
 export {
+  Async ,
+  unit ,
   sleep ,
   sleepAsync ,
   sleepPromise ,

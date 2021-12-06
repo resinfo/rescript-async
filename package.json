@@ -22,6 +22,6 @@
   "scripts": {
     "watch-tests": "onchange --initial '{test,src}/*.mjs' -- pta 'test/*.test.mjs'",
     "test": "pta 'test/*.test.mjs'",
-    "prepublish": "npm test"
+    "prepublishOnly": "npm test"
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "@resinfo/async",
-  "version": "0.1.0",
-  "namespace": true,
+  "version": "1.0.0",
+  "namespace": false,
   "sources": [{
     "dir": "src",
     "subdirs": true
