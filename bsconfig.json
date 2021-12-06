@@ -1,13 +1,21 @@
 {
   "name": "@resinfo/async",
-  "namespace": true,
-  "version": "0.1.0",
-  "sources": {
+  "version": "1.0.0",
+  "namespace": false,
+  "sources": [{
     "dir": "src",
     "subdirs": true
-  },
+  }, {
+    "dir": "test",
+    "type": "dev"
+  }],
+  "bs-dev-dependencies": [
+    "@dusty-phillips/rescript-zora",
+    "@ryyppy/rescript-promise"
+  ],
   "package-specs": {
     "in-source": true,
-    "module": "commonjs"
+    "module": "es6",
+    "suffix": ".mjs"
   }
 }
