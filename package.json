@@ -2,10 +2,26 @@
   "name": "@resinfo/async",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "repository": "https://github.com/oliverfencott/rescript-async.git",
   "author": "Oliver Fencott <oliverfencott@gmail.com>",
   "license": "MIT",
+  "files": [
+    "src/async.res",
+    "src/async.resi",
+    "bsconfig.json"
+  ],
   "devDependencies": {
-    "rescript": "^9.1.4"
+    "@dusty-phillips/rescript-zora": "^3.0.0",
+    "@ryyppy/rescript-promise": "^2.1.0",
+    "onchange": "^7.1.0",
+    "pta": "^1.0.1",
+    "rescript": "^9.1.4",
+    "zora": "^5.0.1"
+  },
+  "scripts": {
+    "watch-tests": "onchange --initial '{test,src}/*.mjs' -- pta 'test/*.test.mjs'",
+    "test": "pta 'test/*.test.mjs'",
+    "prepublishOnly": "npm test"
   }
 }

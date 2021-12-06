@@ -90,3 +90,5 @@ typings/
 lib
 .merlin
 .bsb.lock
+
+.vscode
