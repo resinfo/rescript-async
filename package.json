@@ -1,6 +1,6 @@
 {
   "name": "@resinfo/async",
-  "version": "1.0.1",
+  "version": "3.0.0",
   "main": "index.js",
   "type": "module",
   "repository": "https://github.com/oliverfencott/rescript-async.git",
@@ -22,7 +22,7 @@
   },
   "scripts": {
     "watch-tests": "onchange --initial '{test,src}/*.mjs' -- pta 'test/*.test.mjs'",
-    "test": "pta 'test/*.test.mjs'",
+    "test": "rescript build && pta 'test/*.test.mjs'",
     "prepublishOnly": "npm test"
   },
   "keywords": [
