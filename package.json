@@ -5,6 +5,7 @@
   "type": "module",
   "repository": "https://github.com/oliverfencott/rescript-async.git",
   "author": "Oliver Fencott <oliverfencott@gmail.com>",
+  "description": "A ReScript module providing a lazy, typesafe API for writing asynchronous code.",
   "license": "MIT",
   "files": [
     "src/async.res",
@@ -23,5 +24,9 @@
     "watch-tests": "onchange --initial '{test,src}/*.mjs' -- pta 'test/*.test.mjs'",
     "test": "pta 'test/*.test.mjs'",
     "prepublishOnly": "npm test"
-  }
+  },
+  "keywords": [
+    "rescript",
+    "async"
+  ]
 }
