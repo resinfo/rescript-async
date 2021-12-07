@@ -20,7 +20,7 @@ module Async = Resinfo_async
 // Construct from a promise
 let fetch = url => {
   Async.fromPromise(
-    // assume "get" is a previously promise function
+    // assume "get" is a previously defined promise function
     () => get(url),
     ~resolve=json => Ok(json),
     ~reject=_ => Error()
