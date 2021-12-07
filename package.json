@@ -8,8 +8,8 @@
   "description": "A ReScript module providing a lazy, typesafe API for writing asynchronous code.",
   "license": "MIT",
   "files": [
-    "src/async.res",
-    "src/async.resi",
+    "src/resinfo_async.res",
+    "src/resinfo_async.resi",
     "bsconfig.json"
   ],
   "devDependencies": {
