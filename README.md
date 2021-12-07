@@ -2,6 +2,18 @@
 
 A ReScript module providing a lazy, typesafe API for writing asynchronous code.
 
+## NOTE:
+
+This version currently only works with ES modules, which requires
+
+```json
+{
+  "type": "module"
+}
+```
+
+to be set in your `package.json`
+
 ## Installation
 
 via NPM.
