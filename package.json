@@ -21,7 +21,7 @@
     "zora": "^5.0.1"
   },
   "scripts": {
-    "watch-tests": "onchange --initial '{test,src}/*.mjs' -- pta 'test/*.test.mjs'",
+    "test:watch": "onchange --initial '{test,src}/*.mjs' -- pta 'test/*.test.mjs'",
     "test": "rescript build && pta 'test/*.test.mjs'",
     "prepublishOnly": "npm test"
   },

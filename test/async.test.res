@@ -266,3 +266,43 @@ zora("Cancellable", t => {
 
   done()
 })
+
+exception MyException
+
+zora("can be constructed from a promise", t => {
+  t->test("it succeeds correctly", t => {
+    Promise.make((resolve, _) => {
+      Async.fromPromise(
+        () => sleepPromise(1000),
+        ~resolve=_ => Ok(),
+        ~reject=_ => Error(),
+      )->Async.run(res => {
+        switch res {
+        | Ok() => t->ok(true, "returned correct result")
+        | Error() => t->fail("returned incorrect result")
+        }
+
+        resolve(. unit)
+      })
+    })
+  })
+
+  t->test("it fails correctly", t => {
+    Promise.make((resolve, _) => {
+      Async.fromPromise(
+        () => Js.Promise.reject(MyException),
+        ~resolve=_ => Ok(),
+        ~reject=e => Error(e),
+      )->Async.run(res => {
+        switch res {
+        | Ok() => t->fail("returned incorrect result")
+        | Error(_) => t->ok(true, "returned correct result")
+        }
+
+        resolve(. unit)
+      })
+    })
+  })
+
+  done()
+})

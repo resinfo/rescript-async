@@ -4,6 +4,7 @@ import * as Zora from "@dusty-phillips/rescript-zora/src/Zora.mjs";
 import * as Zora$1 from "zora";
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Resinfo_async from "../src/resinfo_async.mjs";
+import * as Caml_exceptions from "rescript/lib/es6/caml_exceptions.js";
 
 function sleep(duration, fn) {
   setTimeout(fn, duration);
@@ -318,6 +319,62 @@ Zora$1.test("Cancellable", (function (t) {
         return Zora.done(undefined);
       }));
 
+var MyException = /* @__PURE__ */Caml_exceptions.create("Async.MyException");
+
+Zora$1.test("can be constructed from a promise", (function (t) {
+        t.test("it succeeds correctly", (function (t) {
+                return new Promise((function (resolve, param) {
+                              return Resinfo_async.run(Resinfo_async.fromPromise((function (param) {
+                                                return sleepPromise(1000);
+                                              }), (function (param) {
+                                                return {
+                                                        TAG: /* Ok */0,
+                                                        _0: undefined
+                                                      };
+                                              }), (function (param) {
+                                                return {
+                                                        TAG: /* Error */1,
+                                                        _0: undefined
+                                                      };
+                                              })), (function (res) {
+                                            if (res.TAG === /* Ok */0) {
+                                              t.ok(true, "returned correct result");
+                                            } else {
+                                              t.fail("returned incorrect result");
+                                            }
+                                            return resolve(undefined);
+                                          }));
+                            }));
+              }));
+        t.test("it fails correctly", (function (t) {
+                return new Promise((function (resolve, param) {
+                              return Resinfo_async.run(Resinfo_async.fromPromise((function (param) {
+                                                return Promise.reject({
+                                                            RE_EXN_ID: MyException
+                                                          });
+                                              }), (function (param) {
+                                                return {
+                                                        TAG: /* Ok */0,
+                                                        _0: undefined
+                                                      };
+                                              }), (function (e) {
+                                                return {
+                                                        TAG: /* Error */1,
+                                                        _0: e
+                                                      };
+                                              })), (function (res) {
+                                            if (res.TAG === /* Ok */0) {
+                                              t.fail("returned incorrect result");
+                                            } else {
+                                              t.ok(true, "returned correct result");
+                                            }
+                                            return resolve(undefined);
+                                          }));
+                            }));
+              }));
+        return Zora.done(undefined);
+      }));
+
 var Async;
 
 var unit;
@@ -328,6 +385,7 @@ export {
   sleep ,
   sleepAsync ,
   sleepPromise ,
+  MyException ,
   
 }
 /*  Not a pure module */
