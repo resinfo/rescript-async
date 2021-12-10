@@ -3,6 +3,7 @@
   "version": "4.0.0",
   "main": "index.js",
   "repository": "https://github.com/resinfo/rescript-async.git",
+  "homepage": "https://github.com/resinfo/rescript-async#readme",
   "author": "Oliver Fencott <oliverfencott@gmail.com>",
   "description": "A ReScript module providing a lazy, typesafe API for writing asynchronous code.",
   "license": "MIT",
