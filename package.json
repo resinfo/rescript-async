@@ -1,6 +1,6 @@
 {
   "name": "@resinfo/async",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "main": "index.js",
   "repository": "https://github.com/resinfo/rescript-async.git",
   "author": "Oliver Fencott <oliverfencott@gmail.com>",
