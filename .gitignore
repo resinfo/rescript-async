@@ -92,5 +92,3 @@ lib
 .bsb.lock
 
 .vscode
-
-src/**.mjs

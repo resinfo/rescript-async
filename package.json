@@ -1,9 +1,8 @@
 {
   "name": "@resinfo/async",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "main": "index.js",
-  "type": "module",
-  "repository": "https://github.com/oliverfencott/rescript-async.git",
+  "repository": "https://github.com/resinfo/rescript-async.git",
   "author": "Oliver Fencott <oliverfencott@gmail.com>",
   "description": "A ReScript module providing a lazy, typesafe API for writing asynchronous code.",
   "license": "MIT",
@@ -21,8 +20,8 @@
     "zora": "^5.0.1"
   },
   "scripts": {
-    "watch-tests": "onchange --initial '{test,src}/*.mjs' -- pta 'test/*.test.mjs'",
-    "test": "rescript build && pta 'test/*.test.mjs'",
+    "test:watch": "onchange --initial '{test,src}/*.mjs' -- pta 'test/*.test.mjs' --module-loader=mjs",
+    "test": "rescript build && pta  'test/*.test.mjs' --module-loader=mjs",
     "prepublishOnly": "npm test"
   },
   "keywords": [
